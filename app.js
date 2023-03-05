@@ -1,7 +1,8 @@
 
 const fs = require ("fs");
 const PersonsData = require("./PersonsData")
-const yargs = require("yargs")
+const yargs = require("yargs");
+const { array } = require("yargs");
 
 yargs.command({
     command:"add",
@@ -16,11 +17,16 @@ yargs.command({
             describe:"add lname",
             demandOption:true,
             type:"string"
+        },
+        arraydegree:{
+            describe:"add your degree",
+            demandOption:true,
+            type:array
         }
 
     },
     handler:(x)=>{
-        PersonsData.allPersonsData (x.id, x.fname , x.lname,x.age , x.city);
+        PersonsData.allPersonsData (x.id, x.fname , x.lname,x.age , x.city,x.arraydegree);
     }
 
 })

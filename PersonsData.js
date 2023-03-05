@@ -1,20 +1,26 @@
 const fs = require ("fs");
 
-const allPersonsData = ( id ,fname , lname , age , city ) =>{
-
+const allPersonsData = ( id ,fname , lname , age , city ,arraydegree ) =>{
+    arraydegree=[];
     const persondata = loaddata();
 
     const duplecateddata = persondata.filter((obj)=>{
         return obj.id===id
     })
     console.log(duplecateddata);
+            if (arraydegree!==0){
+                arraydegree.reduce((acc,current) => acc+current,0)/arraydegree.length
+            }else{
+                return 0
+            };
     if(duplecateddata.length == 0){
     persondata.push({
         id:id,
         fname:fname,
         lname:lname,
         age:age,
-        city:city
+        city:city,
+        arraydegree:arraydegree
     });
     savealldata(persondata)
 }else{
